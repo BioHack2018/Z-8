@@ -4,15 +4,14 @@
 import os
 import re
 
+
 #file opening
 os.getcwd()
-#path = input("Please provide a path to genome-containing directory:\n")
-path = "/Users/staskowiak/Z-8"
+path = input("Please provide a path to genome-containing directory:\n")
 os.chdir(path)
     
 file_name = input("Provide a file name")
 
-  
 fp = open(file_name, "r")
 full_genome = fp.read()
 fp.close()
@@ -49,21 +48,14 @@ for nucleotide in full_genome:
 
 del full_genome
 
-header
-final_genome
-
-
-
 #looking for
-shine_dalgarno = ["AGGAGG"]
-
+shine_dalgarno = ["TCCTCC"]
 
 
 for motif in shine_dalgarno:
     sd_positions = [seq.start() for seq in re.finditer(motif, final_genome)]
     
     
- 
 #extracting the UPSTREAM AND DOWNSTREAM REGIONS 
 region_seq = []
 
@@ -72,23 +64,17 @@ for coord in sd_positions:
     start = coord - 100
     stop = coord + 10
     
-
     if (start < 0):
         start = 0
     
     if (stop > (len(final_genome)-1)):
-        print("helo")
         stop = len(final_genome)-1
         
-        
-    print("start: ",start)
-    print("stop: ",stop)
-    print(final_genome[start:stop])
-            
+                    
     region_seq.append(final_genome[start:stop])
     
   
-    
+ 
 from header import Region_with_SD
 
 unfiltered_regions = []    
@@ -98,6 +84,10 @@ for i in range(len(region_seq)):
     
     unfiltered_regions[2].get_sequence()
 
+ 
+
+
+
+
+
     
-
-
