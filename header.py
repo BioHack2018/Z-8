@@ -18,3 +18,29 @@ class Region_with_SD():
     def get_position(self):
         return self.sd_pos
     
+
+class Gene():
+    
+    def __init__(self, name, sequence, start, stop):
+        self.sequence = sequence
+        self.name = name
+        self.start = start
+        self.stop = stop
+        
+    def get_sequence(self):
+        return self.sequence
+    
+    def get_name(self):
+        return self.name
+    
+    def get_start(self):
+        return self.start
+    
+    def get_stop(self):
+        return self.stop
+    
+    
+    
+    
+    
+    
