@@ -3,16 +3,19 @@
 
 import os
 import re
+from bartek import clearSeqs
+from Bio.Seq import Seq
 
 
 #file opening
 os.getcwd()
-path = input("Please provide a path to genome-containing directory:\n")
-os.chdir(path)
+#path = input("Please provide a path to genome-containing directory:\n")
+#os.chdir(path)
     
-file_name = input("Provide a file name")
+#file_name = input("Provide a file name")
 
-fp = open(file_name, "r")
+
+fp = open("/home/panda/Pulpit/GCA_000007265.1_ASM726v1_genomic.fna", "r")
 full_genome = fp.read()
 fp.close()
 
@@ -43,7 +46,6 @@ for nucleotide in full_genome:
     
     else:
         final_genome = final_genome + nucleotide
-
 
 
 del full_genome
@@ -81,13 +83,12 @@ unfiltered_regions = []
 for i in range(len(region_seq)):
     x = Region_with_SD(region_seq[i], sd_positions[i])
     unfiltered_regions.append(x)
-    
-    unfiltered_regions[2].get_sequence()
 
- 
+print("Len unfiltered: ", len(unfiltered_regions))
+clearList = clearSeqs.clearSeqs(unfiltered_regions)
+print(clearList)
+print("Len cleared: ", len(clearList))
 
+from wiktor import step5
 
-
-
-
-    
+print(step5.funkcja(clearList, final_genome))
