@@ -14,7 +14,7 @@ kodon_stop3 = "ACT"
 list_of_sd_positions = [1, 29, 55, 100];
 
 
-def trojki(lista,genome):
+def get_genes(lista, genome):
     list_of_genes = []
 
     for j in lista:

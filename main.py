@@ -6,9 +6,9 @@ import re
 
 from Bio.Seq import Seq
 
-import test
+from bartek import get_start_codon_and_SD
 
-fp = open("sequence.fasta", "r")
+fp = open("EcoliGenome.fasta", "r")
 full_genome = fp.read()
 fp.close()
 
@@ -43,15 +43,15 @@ for nucleotide in full_genome:
 
 del full_genome
 
-from wiktor import step5
-dane = step5.trojki(test.zaqw('sequence.fasta'), final_genome)
+from wiktor import wycinanie_genow
+dane = wycinanie_genow.get_genes(get_start_codon_and_SD.get_start_codon_and_SD('EcoliGenome.fasta'), final_genome)
 
 headers = []
 
 for i in range(len(dane)):
     headers.append(">Seq " + str(i) + '\n')
 
-fp = open('wygranko.fasta', 'a')
+fp = open('Genes.fasta', 'a')
 
 
 for i in range(len(dane)):
@@ -61,14 +61,14 @@ fp.close()
 seq = Seq(final_genome)
 seq = seq.reverse_complement()
 
-dane = step5.trojki(test.zaqw('sequence.fasta'), seq)
+dane = wycinanie_genow.get_genes(get_start_codon_and_SD.get_start_codon_and_SD('EcoliGenome.fasta'), seq)
 
 headers = []
 
 for i in range(len(dane)):
     headers.append(">Seq Reverse " + str(i) + '\n')
 
-fp = open('wygrankoReverse.fasta', 'a')
+fp = open('GenesReverse.fasta', 'a')
 
 
 for i in range(len(dane)):

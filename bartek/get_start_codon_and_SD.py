@@ -1,6 +1,6 @@
 import re
 
-def zaqw (genome):
+def get_start_codon_and_SD (genome):
     fp = open(genome, "r")
     full_genome = fp.read()
     fp.close()
