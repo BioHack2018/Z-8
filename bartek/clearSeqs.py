@@ -24,7 +24,7 @@ def _calculateHamming(seq, TFBS):
 
 def clearSeqs(seqList):
     pureSD = []
-    seq_TFBS = list(SeqIO.parse("StreptococcusDB.fasta", "fasta"))
+    seq_TFBS = list(SeqIO.parse("ecoliDB.fas", "fasta"))
     for seq in seqList:
         for TFBS in seq_TFBS:
             distance = _calculateHamming(seq.get_sequence(), TFBS.seq)

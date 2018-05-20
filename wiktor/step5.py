@@ -10,7 +10,7 @@ kodon_stop3 = "ACT"
 def funkcja(lista, genome):
     list_of_genes=[]
     for i in lista:
-        for j in range(3):
+        for j in range(2):
             starting_position=i+j
             gene_start=genome.find(kodon_start,starting_position)
             gene_end1=genome.find(kodon_stop1,gene_start)

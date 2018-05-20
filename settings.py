@@ -15,7 +15,7 @@ os.getcwd()
 #file_name = input("Provide a file name")
 
 
-fp = open("/home/panda/Pulpit/GCA_000007265.1_ASM726v1_genomic.fna", "r")
+fp = open("/home/panda/Pulpit/sequence.fasta", "r")
 full_genome = fp.read()
 fp.close()
 
@@ -51,7 +51,7 @@ for nucleotide in full_genome:
 del full_genome
 
 #looking for
-shine_dalgarno = ["TCCTCC"]
+shine_dalgarno = ["TCCTCC", "TCCTTC", "TCCTC", "TCCTT"]
 
 
 for motif in shine_dalgarno:
@@ -91,4 +91,4 @@ print("Len cleared: ", len(clearList))
 
 from wiktor import step5
 
-print(step5.funkcja(clearList, final_genome))
+print(len(step5.funkcja(clearList, final_genome)))
