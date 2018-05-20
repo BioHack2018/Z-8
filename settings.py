@@ -3,8 +3,7 @@
 
 import os
 import re
-from bartek import clearSeqs
-from Bio.Seq import Seq
+import test
 
 
 #file opening
@@ -57,38 +56,9 @@ shine_dalgarno = ["TCCTCC", "TCCTTC", "TCCTC", "TCCTT"]
 for motif in shine_dalgarno:
     sd_positions = [seq.start() for seq in re.finditer(motif, final_genome)]
     
-    
-#extracting the UPSTREAM AND DOWNSTREAM REGIONS 
-region_seq = []
 
-for coord in sd_positions:
 
-    start = coord - 100
-    stop = coord + 10
-    
-    if (start < 0):
-        start = 0
-    
-    if (stop > (len(final_genome)-1)):
-        stop = len(final_genome)-1
-        
-                    
-    region_seq.append(final_genome[start:stop])
-    
-  
- 
-from header import Region_with_SD
-
-unfiltered_regions = []    
-for i in range(len(region_seq)):
-    x = Region_with_SD(region_seq[i], sd_positions[i])
-    unfiltered_regions.append(x)
-
-print("Len unfiltered: ", len(unfiltered_regions))
-clearList = clearSeqs.clearSeqs(unfiltered_regions)
-print(clearList)
-print("Len cleared: ", len(clearList))
 
 from wiktor import step5
 
-print(len(step5.funkcja(clearList, final_genome)))
+print(len(step5.funkcja(test.zaqw('/home/panda/Pulpit/sequence.fasta'), final_genome)))
