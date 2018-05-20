@@ -51,5 +51,16 @@ for motif in shine_dalgarno:
 
 
 from wiktor import step5
+dane = step5.trojki(test.zaqw('/home/panda/Pulpit/sequence.fasta'), final_genome)
 
-print(len(step5.trojki(test.zaqw('/home/panda/Pulpit/sequence.fasta'), final_genome)))
+headers = []
+
+for i in range(len(dane)):
+    headers.append(">Seq " + str(i) + '\n')
+
+fp = open('wygranko.fasta', 'a')
+
+
+for i in range(len(dane)):
+    fp.write(headers[i] + dane[i] + "\n")
+fp.close()
