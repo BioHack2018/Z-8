@@ -9,21 +9,26 @@ sequence="xxxxxxAUGxxxxxxxxxxUAGxxxxxxxxUAAxxxxxxUGAxxxxxxxAUGxxxUGAxxxxxxxxxxxx
 
 list_of_sd_positions=[1,29,55,100];
 
-def funkcja(list):
+def trojki(list):
     list_of_genes=[]
-    for i in list:
-        starting_position=i
-        gene_start=sequence.find(kodon_start,starting_position)
-        gene_end1=sequence.find(kodon_stop1,gene_start)
-        gene_end2=sequence.find(kodon_stop2,gene_start)
-        gene_end3=sequence.find(kodon_stop3,gene_start)
-        #print("start",gene_start)
-        #print("konce",gene_end1,gene_end2,gene_end3)
-        gene_end=min(n for n in [gene_end1,gene_end2,gene_end3] if n>0)
-        #print("poczatek genu: ",gene_start,"koniec genu: ",gene_end)
-        list_of_genes.append(sequence[gene_start:gene_end+3])
+    for j in list:
+        starting_position=j
+        gene_start = sequence.find(kodon_start, starting_position)
+        temp_start = gene_start+3
+        while (True):
+            codon = sequence[temp_start: temp_start+3]
+            if codon == kodon_stop1 or codon == kodon_stop2 or codon == kodon_stop3:
+                list_of_genes.append(sequence[gene_start:temp_start+3])
+                break
+            else:
+                temp_start += 3
+    print (list_of_genes)
+    return (list_of_genes)
 
-    #print(list_of_genes)
-    return list_of_genes
+    #n=3
+    #list_of_ends=[]
+    #list_of_ends.append([sequence[i:i + n] for i in range(gene_start, len(sequence), n)])
+    #print (list_of_ends)
 
-funkcja(list_of_sd_positions)
+
+trojki(list_of_sd_positions)
