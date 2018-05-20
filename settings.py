@@ -5,15 +5,6 @@ import os
 import re
 import test
 
-
-#file opening
-os.getcwd()
-#path = input("Please provide a path to genome-containing directory:\n")
-#os.chdir(path)
-    
-#file_name = input("Provide a file name")
-
-
 fp = open("/home/panda/Pulpit/sequence.fasta", "r")
 full_genome = fp.read()
 fp.close()
@@ -61,4 +52,4 @@ for motif in shine_dalgarno:
 
 from wiktor import step5
 
-print(len(step5.funkcja(test.zaqw('/home/panda/Pulpit/sequence.fasta'), final_genome)))
+print(len(step5.trojki(test.zaqw('/home/panda/Pulpit/sequence.fasta'), final_genome)))
